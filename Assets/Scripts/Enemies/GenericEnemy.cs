@@ -11,6 +11,8 @@ public class GenericEnemy : MonoBehaviour
     private float distance;
     public float sight;
 
+    public int damage;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -40,6 +42,16 @@ public class GenericEnemy : MonoBehaviour
         if(health <= 0)
         {
             Destroy(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Player")
+        {
+            GameObject player = collision.gameObject;
+            player.gameObject.GetComponent<KnockBackFeedback>().PlayFeedback(this.gameObject);
+            player.GetComponent<PlayerHealth>().ReduceHealth(damage);
         }
     }
 }

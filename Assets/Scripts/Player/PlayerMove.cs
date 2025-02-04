@@ -13,13 +13,10 @@ public class PlayerMove : MonoBehaviour
 
     Vector2 mousePosition;
 
-    private void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
+        
         // Movement
         position.x = Input.GetAxisRaw("Horizontal");
         position.y = Input.GetAxisRaw("Vertical");
@@ -34,6 +31,7 @@ public class PlayerMove : MonoBehaviour
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
+        
     }
 }
 
