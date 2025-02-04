@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-// Following this tutorial: https://www.youtube.com/watch?v=RXhTD8YZnY4
+// Following this tutorial: https://www.youtube.com/watch?v=RXhTD8YZnY4 (For now) 
 public class KnockBackFeedback : MonoBehaviour
 {
     [SerializeField]

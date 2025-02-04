@@ -16,7 +16,7 @@ public class GenericObject : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        objectColor = Color.white;
+        objectColor = Color.yellow;
         sprite = GetComponent<SpriteRenderer>();
         sprite.color = objectColor;
     }
@@ -34,7 +34,7 @@ public class GenericObject : MonoBehaviour
         }
         else
         {
-            objectColor = Color.white;
+            objectColor = Color.yellow;
         }
     }
 
