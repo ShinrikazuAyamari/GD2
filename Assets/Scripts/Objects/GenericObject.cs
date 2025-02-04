@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class GenericObject : MonoBehaviour
 {
+    public int damage;  
 
     public Color objectColor; // This is temporary and purely for showing when it's hurtbox is active. 
     private SpriteRenderer sprite;
 
     public float speed;
 
-    public float activeSpeed;
+    public float activeSpeed;   //  speed to check when the hurtbox should be active
 
     public Rigidbody2D body;
 
@@ -43,7 +44,8 @@ public class GenericObject : MonoBehaviour
         {
             if (collision.gameObject.tag == "Enemy")
             {
-                Destroy(collision.gameObject);
+                GameObject enemy = collision.gameObject;
+                enemy.GetComponent<GenericEnemy>().onAttacked(damage);
             }
         }
     }
