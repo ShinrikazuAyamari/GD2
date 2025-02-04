@@ -32,6 +32,7 @@ public class GrabObjectScript : MonoBehaviour
                 {
                     //grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                     grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // Sets the grabbed object's velocity to zero so it won't move when grabbed. 
+                    grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().simulated = false; // Disable simulation so the objects hurt box won't be enabled while walking around with it.
                     grabbedObject = grabCheck.collider.gameObject;
                     holding = true;
                 }
@@ -41,6 +42,7 @@ public class GrabObjectScript : MonoBehaviour
             {
                 grabbedObject.transform.parent = null;
                 //grabbedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                grabbedObject.GetComponent<Rigidbody2D>().simulated = true;
                 grabbedObject.GetComponent<Rigidbody2D>().linearVelocity = transform.up * shootStrength;
                 grabbedObject = null;
                 holding = false;
