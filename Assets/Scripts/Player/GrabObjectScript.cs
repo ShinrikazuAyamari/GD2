@@ -30,11 +30,9 @@ public class GrabObjectScript : MonoBehaviour
                 RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, direction, rayDist);
                 if (grabCheck.collider != null && grabCheck.collider.tag == "Object")
                 {
-                    grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                    //grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                     grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero; // Sets the grabbed object's velocity to zero so it won't move when grabbed. 
                     grabbedObject = grabCheck.collider.gameObject;
-                    //grabCheck.collider.gameObject.transform.position = objectHolder.position;
-                    //grabCheck.collider.gameObject.transform.parent = objectHolder;
                     holding = true;
                 }
 
@@ -42,7 +40,7 @@ public class GrabObjectScript : MonoBehaviour
             else
             {
                 grabbedObject.transform.parent = null;
-                grabbedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                //grabbedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 grabbedObject.GetComponent<Rigidbody2D>().linearVelocity = transform.up * shootStrength;
                 grabbedObject = null;
                 holding = false;
