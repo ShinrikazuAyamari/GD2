@@ -34,6 +34,13 @@ public class GrabObjectScript : MonoBehaviour
         {
             GrabAndRelease(0, objectHolderLeft, ref holdingLeft, ref grabbedObjectLeft);
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            GrabAndRelease(1, objectHolderRight, ref holdingRight, ref grabbedObjectRight);
+        }
+
+        updateObject(ref grabbedObjectLeft, objectHolderLeft);
+        updateObject(ref grabbedObjectRight, objectHolderRight);
     }
 
 
@@ -69,7 +76,10 @@ public class GrabObjectScript : MonoBehaviour
             grabbedObject = null;
             holding = false;
         }
+    }
 
+    private void updateObject(ref GameObject grabbedObject, Transform objectHolder)
+    {
         if (grabbedObject != null)
         {
             if (Vector2.Distance(grabbedObject.transform.position, objectHolder.transform.position) > 0.1f)
