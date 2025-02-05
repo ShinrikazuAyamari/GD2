@@ -1713,6 +1713,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dbea4ad96f53ae479470653fc3b60f1, type: 3}
+--- !u!4 &236025823 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5914219520410485337, guid: 9582fd9d08ee9794d9f554f3a2ba8ae1, type: 3}
+  m_PrefabInstance: {fileID: 5876980174968654968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &318673724
 GameObject:
   m_ObjectHideFlags: 0
@@ -6920,6 +6925,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 658908555}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1936688444 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3986213461282853372, guid: 9582fd9d08ee9794d9f554f3a2ba8ae1, type: 3}
+  m_PrefabInstance: {fileID: 5876980174968654968}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1973102378
 GameObject:
   m_ObjectHideFlags: 0
@@ -7741,6 +7751,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1501823256543807853, guid: 9582fd9d08ee9794d9f554f3a2ba8ae1, type: 3}
+      propertyPath: m_Name
+      value: Object Holder Right Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 2757033545386161143, guid: 9582fd9d08ee9794d9f554f3a2ba8ae1, type: 3}
+      propertyPath: m_Name
+      value: Object Holder Left Hand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4538787632238691227, guid: 9582fd9d08ee9794d9f554f3a2ba8ae1, type: 3}
+      propertyPath: objectHolderLeft
+      value: 
+      objectReference: {fileID: 236025823}
+    - target: {fileID: 4538787632238691227, guid: 9582fd9d08ee9794d9f554f3a2ba8ae1, type: 3}
+      propertyPath: objectHolderRight
+      value: 
+      objectReference: {fileID: 1936688444}
     - target: {fileID: 7052485793489670393, guid: 9582fd9d08ee9794d9f554f3a2ba8ae1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.98
