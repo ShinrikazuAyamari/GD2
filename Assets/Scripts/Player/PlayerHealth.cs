@@ -1,17 +1,19 @@
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
 
     public int health;
 
-    public void ReduceHealth(int decreaseAmount)
+    public void ReduceHealth(int increaseAmount)
     {
-        health -= decreaseAmount;
-
-        if (health <= 0)
+        health += increaseAmount;
+        
+        if (health >= 100)
         {
-            Destroy(this.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // To always load the current scene when the player dies. 
         }
     }
 }
