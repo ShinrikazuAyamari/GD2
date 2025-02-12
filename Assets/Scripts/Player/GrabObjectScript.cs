@@ -1,3 +1,4 @@
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -13,12 +14,13 @@ public class GrabObjectScript : MonoBehaviour
     public Transform objectHolderLeft;
     bool holdingLeft;
     GameObject grabbedObjectLeft;
+    float leftMass;
 
     //  Right hand stuff
-
     public Transform objectHolderRight;
     bool holdingRight;
     GameObject grabbedObjectRight;
+    float rightMass;
 
     public float shootStrength;
     public float grabSpeed;
@@ -30,19 +32,22 @@ public class GrabObjectScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            GrabAndRelease(-1, objectHolderLeft, ref holdingLeft, ref grabbedObjectLeft);
+            GrabAndRelease(-1, objectHolderLeft, ref holdingLeft, ref grabbedObjectLeft, ref leftMass);
         }
         if (Input.GetMouseButtonDown(1))
         {
-            GrabAndRelease(1, objectHolderRight, ref holdingRight, ref grabbedObjectRight);
+            GrabAndRelease(1, objectHolderRight, ref holdingRight, ref grabbedObjectRight, ref rightMass);
         }
+    }
 
+    private void FixedUpdate()
+    {
         updateObject(ref grabbedObjectLeft, objectHolderLeft);
-        updateObject(ref grabbedObjectRight, objectHolderRight);
+        updateObject(ref grabbedObjectRight, objectHolderRight);   
     }
 
 
-    private void GrabAndRelease(int handNumb, Transform objectHolder, ref bool holding, ref GameObject grabbedObject)
+    private void GrabAndRelease(int handNumb, Transform objectHolder, ref bool holding, ref GameObject grabbedObject, ref float mass)
     {
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
@@ -51,26 +56,28 @@ public class GrabObjectScript : MonoBehaviour
             RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, direction, rayDist);
             if (grabCheck.collider != null && grabCheck.collider.tag == "Object")
             {
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 Rigidbody2D grabRigidbody = grabCheck.collider.gameObject.GetComponent<Rigidbody2D>();
+
                 grabRigidbody.linearVelocity = Vector2.zero; // Sets the grabbed object's velocity to zero so it won't move when grabbed. 
-                //grabRigidbody.simulated = false;     // Disable simulation so the objects hurt box won't be enabled while walking around with it.
                 grabbedObject = grabCheck.collider.gameObject;
                 holding = true;
 
-                float objectMass = grabbedObject.GetComponent<Rigidbody2D>().mass;
+                float objectMass = grabRigidbody.mass;
                 Vector2 objectOffset;
-                objectOffset.x = handNumb/2 + (objectMass / 2 * handNumb);
+                objectOffset.x = handNumb/1.5f + (objectMass / 2 * handNumb);
                 objectOffset.y = 0.9f + objectMass / 2;
                 objectHolder.transform.localPosition = objectOffset;
 
-                grabbedObject.transform.parent = objectHolder;
+                mass = grabRigidbody.mass;
+                grabRigidbody.mass = 0.1f;
+
             }
 
         }
         else
         {
-            grabbedObject.transform.parent = null;
+            grabbedObject.GetComponent<Rigidbody2D>().mass = mass;
             grabbedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             grabbedObject.GetComponent<Rigidbody2D>().simulated = true;
             grabbedObject.GetComponent<Rigidbody2D>().linearVelocity = transform.up * shootStrength;
@@ -83,15 +90,11 @@ public class GrabObjectScript : MonoBehaviour
     {
         if (grabbedObject != null)
         {
-            if (Vector2.Distance(grabbedObject.transform.position, objectHolder.transform.position) > 0.1f)
-            {
-                grabbedObject.transform.position = Vector2.MoveTowards(grabbedObject.transform.position, objectHolder.transform.position, Time.deltaTime * grabSpeed);
-            }
-            else
-            {
-                grabbedObject.transform.position = objectHolder.position;
-                grabbedObject.transform.rotation = objectHolder.rotation;
-            }
+            Rigidbody2D grabbedRG = grabbedObject.GetComponent<Rigidbody2D>();
+
+            Vector2 targetPos = objectHolder.position;
+            grabbedRG.MovePosition(Vector2.MoveTowards(grabbedRG.position, targetPos, Time.deltaTime * grabSpeed));
+            grabbedObject.transform.rotation = objectHolder.rotation;
         }
     }
 }

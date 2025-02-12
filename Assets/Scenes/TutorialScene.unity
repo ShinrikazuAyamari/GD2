@@ -8097,6 +8097,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 276869727235893668, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 276869727235893668, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1980
+      objectReference: {fileID: 0}
+    - target: {fileID: 276869727235893668, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446173522215793363, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.882087
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446173522215793363, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 14.053543
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446173522215793363, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.882087
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446173522215793363, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -666
+      objectReference: {fileID: 0}
+    - target: {fileID: 1446173522215793363, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -477
+      objectReference: {fileID: 0}
     - target: {fileID: 1671480997819684580, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -8177,6 +8209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2935340332779856636, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_RenderMode
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7625269036606554860, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8210,6 +8246,18 @@ PrefabInstance:
       propertyPath: healthSlider
       value: 
       objectReference: {fileID: 165618915}
+    - target: {fileID: 2958945514052623829, guid: b8df6c80f0e47ba41a4b5d2f600c01d2, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2958945514052623829, guid: b8df6c80f0e47ba41a4b5d2f600c01d2, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3366495178582706838, guid: b8df6c80f0e47ba41a4b5d2f600c01d2, type: 3}
+      propertyPath: strength
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5508500012260332295, guid: b8df6c80f0e47ba41a4b5d2f600c01d2, type: 3}
       propertyPath: m_Name
       value: Player
