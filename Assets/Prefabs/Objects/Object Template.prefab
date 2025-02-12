@@ -180,3 +180,4 @@ MonoBehaviour:
   speed: 0
   activeSpeed: 6
   body: {fileID: 2231249001352918979}
+  Health: 3

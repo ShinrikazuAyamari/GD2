@@ -13,6 +13,8 @@ public class GenericObject : MonoBehaviour
 
     public Rigidbody2D body;
 
+    public int Health;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -46,6 +48,12 @@ public class GenericObject : MonoBehaviour
             {
                 GameObject enemy = collision.gameObject;
                 enemy.GetComponent<GenericEnemy>().onAttacked(damage);
+                Health--;
+
+                if(Health <= 0)
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
