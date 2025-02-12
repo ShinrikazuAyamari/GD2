@@ -56,6 +56,7 @@ public class GrabObjectScript : MonoBehaviour
             RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, direction, rayDist);
             if (grabCheck.collider != null && grabCheck.collider.tag == "Object")
             {
+                grabCheck.collider.tag = "Untagged";
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
                 Rigidbody2D grabRigidbody = grabCheck.collider.gameObject.GetComponent<Rigidbody2D>();
 
@@ -78,6 +79,7 @@ public class GrabObjectScript : MonoBehaviour
         else
         {
             grabbedObject.GetComponent<Rigidbody2D>().mass = mass;
+            grabbedObject.tag = "Object";
             grabbedObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             grabbedObject.GetComponent<Rigidbody2D>().simulated = true;
             grabbedObject.GetComponent<Rigidbody2D>().linearVelocity = transform.up * shootStrength;
