@@ -367,8 +367,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grabDetect: {fileID: 1005915417706472478}
-  objectHolder: {fileID: 5914219520410485337}
   rayDist: 6
+  objectHolderLeft: {fileID: 0}
+  objectHolderRight: {fileID: 0}
   shootStrength: 60
   grabSpeed: 40
 --- !u!114 &5425598892963344664
@@ -383,7 +384,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85a23554474f066498d3f471d4d5ef1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  maxHealth: 100
+  health: 0
+  healthSlider: {fileID: 0}
 --- !u!114 &2478303215139747496
 MonoBehaviour:
   m_ObjectHideFlags: 0
