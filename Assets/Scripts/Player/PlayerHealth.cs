@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerHealth : MonoBehaviour
 {
+    public static int startHealth;
     public int maxHealth;
     public int health;
     public Slider healthSlider;
@@ -13,6 +14,8 @@ public class PlayerHealth : MonoBehaviour
     {
         healthSlider.maxValue = maxHealth;
         healthSlider.minValue = 0;
+        health = startHealth;
+        healthSlider.value = health;
     }
 
     public void ReduceHealth(int increaseAmount)
@@ -22,7 +25,8 @@ public class PlayerHealth : MonoBehaviour
         
         if (health >= maxHealth)
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // To always load the current scene when the player dies. 
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // To always load the current scene when the player dies.
+            startHealth += 20;
         }
     }
 }
