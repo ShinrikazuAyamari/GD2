@@ -53,26 +53,32 @@ public class GrabObjectScript : MonoBehaviour
 
         if (!holding)
         {
-            RaycastHit2D grabCheck = Physics2D.Raycast(grabDetect.position, direction, rayDist);
-            if (grabCheck.collider != null && grabCheck.collider.tag == "Object")
+            for (float i = 0; i < 3; i+= 0.5f)
             {
-                grabCheck.collider.tag = "Untagged";
-                grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-                Rigidbody2D grabRigidbody = grabCheck.collider.gameObject.GetComponent<Rigidbody2D>();
+                Vector2 shootPosition = grabDetect.position;
+                shootPosition.x = grabDetect.position.x + i - 0.5f;
+                RaycastHit2D grabCheck = Physics2D.Raycast(shootPosition, direction, rayDist);
+                if (grabCheck.collider != null && grabCheck.collider.tag == "Object")
+                {
+                    grabCheck.collider.tag = "Untagged";
+                    grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+                    Rigidbody2D grabRigidbody = grabCheck.collider.gameObject.GetComponent<Rigidbody2D>();
 
-                grabRigidbody.linearVelocity = Vector2.zero; // Sets the grabbed object's velocity to zero so it won't move when grabbed. 
-                grabbedObject = grabCheck.collider.gameObject;
-                holding = true;
+                    grabRigidbody.linearVelocity = Vector2.zero; // Sets the grabbed object's velocity to zero so it won't move when grabbed. 
+                    grabbedObject = grabCheck.collider.gameObject;
+                    holding = true;
 
-                float objectMass = grabRigidbody.mass;
-                Vector2 objectOffset;
-                objectOffset.x = handNumb/1.5f + (objectMass / 2 * handNumb);
-                objectOffset.y = 0.9f + objectMass / 2;
-                objectHolder.transform.localPosition = objectOffset;
+                    float objectMass = grabRigidbody.mass;
+                    Vector2 objectOffset;
+                    objectOffset.x = handNumb/1.5f + (objectMass / 2 * handNumb);
+                    objectOffset.y = 0.9f + objectMass / 2;
+                    objectHolder.transform.localPosition = objectOffset;
 
-                mass = grabRigidbody.mass;
-                grabRigidbody.mass = 0.1f;
+                    mass = grabRigidbody.mass;
+                    grabRigidbody.mass = 0.1f;
 
+                    break;
+                }
             }
 
         }
