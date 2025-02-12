@@ -7,8 +7,6 @@ public class GrabObjectScript : MonoBehaviour
     public Transform grabDetect;
     public float rayDist;
 
-    int mouseNumb;
-
     Vector2 mousePosition;
 
     //  Left hand stuff
@@ -32,7 +30,7 @@ public class GrabObjectScript : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            GrabAndRelease(0, objectHolderLeft, ref holdingLeft, ref grabbedObjectLeft);
+            GrabAndRelease(-1, objectHolderLeft, ref holdingLeft, ref grabbedObjectLeft);
         }
         if (Input.GetMouseButtonDown(1))
         {
@@ -47,11 +45,6 @@ public class GrabObjectScript : MonoBehaviour
     private void GrabAndRelease(int handNumb, Transform objectHolder, ref bool holding, ref GameObject grabbedObject)
     {
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-        // This code is gonna need:
-
-        //Grabbedobject (left or right)
-        //Holding
-        //Which input
 
         if (!holding)
         {
@@ -61,9 +54,17 @@ public class GrabObjectScript : MonoBehaviour
                 grabCheck.collider.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
                 Rigidbody2D grabRigidbody = grabCheck.collider.gameObject.GetComponent<Rigidbody2D>();
                 grabRigidbody.linearVelocity = Vector2.zero; // Sets the grabbed object's velocity to zero so it won't move when grabbed. 
-                grabRigidbody.simulated = false;     // Disable simulation so the objects hurt box won't be enabled while walking around with it.
+                //grabRigidbody.simulated = false;     // Disable simulation so the objects hurt box won't be enabled while walking around with it.
                 grabbedObject = grabCheck.collider.gameObject;
                 holding = true;
+
+                float objectMass = grabbedObject.GetComponent<Rigidbody2D>().mass;
+                Vector2 objectOffset;
+                objectOffset.x = handNumb/2 + (objectMass / 2 * handNumb);
+                objectOffset.y = 0.9f + objectMass / 2;
+                objectHolder.transform.localPosition = objectOffset;
+
+                grabbedObject.transform.parent = objectHolder;
             }
 
         }
@@ -90,7 +91,6 @@ public class GrabObjectScript : MonoBehaviour
             {
                 grabbedObject.transform.position = objectHolder.position;
                 grabbedObject.transform.rotation = objectHolder.rotation;
-                grabbedObject.transform.parent = objectHolder;
             }
         }
     }
