@@ -1479,6 +1479,7 @@ MonoBehaviour:
   speed: 0
   activeSpeed: 6
   body: {fileID: 177956228}
+  Health: 0
 --- !u!68 &177956227
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -4961,6 +4962,7 @@ MonoBehaviour:
   speed: 0
   activeSpeed: 6
   body: {fileID: 1438631791}
+  Health: 0
 --- !u!68 &1438631790
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -5141,6 +5143,7 @@ MonoBehaviour:
   speed: 0
   activeSpeed: 6
   body: {fileID: 1498251771}
+  Health: 0
 --- !u!68 &1498251770
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -5321,6 +5324,7 @@ MonoBehaviour:
   speed: 0
   activeSpeed: 6
   body: {fileID: 1499143554}
+  Health: 0
 --- !u!68 &1499143553
 EdgeCollider2D:
   m_ObjectHideFlags: 0
@@ -8212,6 +8216,18 @@ PrefabInstance:
     - target: {fileID: 2935340332779856636, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
       propertyPath: m_RenderMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457938788123668254, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_Color.b
+      value: 0.11698109
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457938788123668254, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_Color.g
+      value: 0.11698109
+      objectReference: {fileID: 0}
+    - target: {fileID: 3457938788123668254, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
+      propertyPath: m_Color.r
+      value: 0.11698109
       objectReference: {fileID: 0}
     - target: {fileID: 7625269036606554860, guid: 403657cdb9d899f4ba9d66e8b50bdb43, type: 3}
       propertyPath: m_AnchorMax.x
