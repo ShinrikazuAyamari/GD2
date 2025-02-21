@@ -447,7 +447,20 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Object_screwdriver_and_chair_0: -3361846618050957469
+      Object_screwdriver_and_chair_1: -7527977063859896058
+      Object_screwdriver_and_chair_10: -5361617190310207776
+      Object_screwdriver_and_chair_11: 2075993387494816921
+      Object_screwdriver_and_chair_12: -1106709425669993979
+      Object_screwdriver_and_chair_2: 3670281433998159137
+      Object_screwdriver_and_chair_3: 4772773673297524580
+      Object_screwdriver_and_chair_4: 7870270600507934193
+      Object_screwdriver_and_chair_5: 2887194708836299791
+      Object_screwdriver_and_chair_6: 4967926756040129320
+      Object_screwdriver_and_chair_7: -2108414212328168123
+      Object_screwdriver_and_chair_8: 8083777161615008018
+      Object_screwdriver_and_chair_9: -504972844379092386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
